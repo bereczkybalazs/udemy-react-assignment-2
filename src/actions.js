@@ -1,0 +1,1 @@
+export const NEW_PERSON = 'NEW_PERSON'
