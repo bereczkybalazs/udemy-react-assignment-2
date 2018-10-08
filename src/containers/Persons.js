@@ -43,7 +43,9 @@ class Persons extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {}
+  return {
+      persons: state.persons
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
