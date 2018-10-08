@@ -6,9 +6,6 @@ import {connect} from "react-redux";
 import {DELETE_PERSON, NEW_PERSON} from "../actions";
 
 class Persons extends Component {
-    state = {
-        persons: []
-    }
 
     personAddedHandler = () => {
         const newPerson = {
