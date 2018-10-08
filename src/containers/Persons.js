@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Person from '../components/Person/Person';
 import AddPerson from '../components/AddPerson/AddPerson';
 import {connect} from "react-redux";
+import {NEW_PERSON} from "../actions";
 
 class Persons extends Component {
     state = {
@@ -15,9 +16,7 @@ class Persons extends Component {
             name: 'Max',
             age: Math.floor( Math.random() * 40 )
         }
-        this.setState( ( prevState ) => {
-            return { persons: prevState.persons.concat(newPerson)}
-        } );
+        this.props.onPersonAdd(newPerson)
     }
 
     personDeletedHandler = (personId) => {
@@ -49,7 +48,12 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {
+    onPersonAdd: (person) => dispatch({
+      type: NEW_PERSON,
+      person: person
+    })
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Persons);
