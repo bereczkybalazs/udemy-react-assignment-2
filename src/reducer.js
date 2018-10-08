@@ -1,8 +1,15 @@
+import {NEW_PERSON} from "./actions";
+
 const initialState = {
   persons: []
 }
 
 const reducer = (state = initialState, action) => {
-  return state
+  switch (action.type) {
+    case NEW_PERSON:
+      return {...state, persons: [...state.persons, action.person]}
+    default:
+      return state
+  }
 }
 export default reducer
