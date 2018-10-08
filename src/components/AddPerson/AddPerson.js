@@ -35,7 +35,7 @@ class AddPerson extends React.Component {
           value={this.state.age}
           onChange={this.ageChangedHandler}
         />
-        <button onClick={this.props.personAdded}>Add Person</button>
+        <button onClick={() => this.props.personAdded(this.state.name, this.state.age)}>Add Person</button>
       </div>
     )
   }
