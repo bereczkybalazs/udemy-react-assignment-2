@@ -7,11 +7,11 @@ import {DELETE_PERSON, NEW_PERSON} from "../actions";
 
 class Persons extends Component {
 
-    personAddedHandler = () => {
+    personAddedHandler = (name, age) => {
         const newPerson = {
             id: Math.random(), // not really unique but good enough here!
-            name: 'Max',
-            age: Math.floor( Math.random() * 40 )
+            name: name,
+            age: age
         }
         this.props.onPersonAdd(newPerson)
     }
