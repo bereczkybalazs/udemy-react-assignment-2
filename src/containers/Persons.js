@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Person from '../components/Person/Person';
 import AddPerson from '../components/AddPerson/AddPerson';
 import {connect} from "react-redux";
-import {NEW_PERSON} from "../actions";
+import {DELETE_PERSON, NEW_PERSON} from "../actions";
 
 class Persons extends Component {
     state = {
@@ -19,12 +19,6 @@ class Persons extends Component {
         this.props.onPersonAdd(newPerson)
     }
 
-    personDeletedHandler = (personId) => {
-        this.setState( ( prevState ) => {
-            return { persons: prevState.persons.filter(person => person.id !== personId)}
-        } );
-    }
-
     render () {
         return (
             <div>
@@ -34,7 +28,7 @@ class Persons extends Component {
                         key={person.id}
                         name={person.name} 
                         age={person.age} 
-                        clicked={() => this.personDeletedHandler(person.id)}/>
+                        clicked={() => this.props.onPersonDelete(person.id)}/>
                 ))}
             </div>
         );
@@ -52,6 +46,10 @@ const mapDispatchToProps = (dispatch) => {
     onPersonAdd: (person) => dispatch({
       type: NEW_PERSON,
       person: person
+    }),
+    onPersonDelete: (id) => dispatch({
+      type: DELETE_PERSON,
+      id: id
     })
   }
 }
